@@ -1,0 +1,1 @@
+Prism.Live.registerLanguage("css",{snippets:{custom:function(e){var t=document.documentElement.style;if(!/^--/.test(e)&&!(e in t)){var n=Object.keys(t).map((e=>e.replace(/[A-Z]/g,(e=>"-"+e.toLowerCase())))).filter((t=>0===t.indexOf(e)||t.split("-").map((e=>e[0])).join("")===e)).sort(((e,t)=>e.length-t.length));if(n.length){if(n.length>1)return n[0];e=n[0]}}return`${e}: $1;`}}});
