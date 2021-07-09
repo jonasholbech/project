@@ -1,14 +1,21 @@
 ---
-const { data, num } = Astro.props;
+const { data, num, all } = Astro.props;
 const boxes = [...Array(data.boxes)]
 const { customClass } = data
 ---
 
 <section class={customClass || null}>
-        <h2 class="small-label">Øvelse {num}</h2>
+        <h2 class="small-label">Øvelse {num} of {all}</h2>
 
         <article class="exercise-details">
-          <img loading="lazy" src={data.image} alt={data.title}>
+          {data.isVideoThumb ? (
+                <video muted loop autoplay playsinline preload="metadata">
+                    <source src={data.image} type="video/mp4" />
+                </video>
+            ) : (
+                <img loading="lazy" src={data.image} alt={data.title}>
+            )
+          }
           <div class="exercise-content">
             <h3>{data.title}</h3>
 
@@ -45,7 +52,7 @@ const { customClass } = data
           <button class="reset">
             <span class="visually-hidden">Reset</span>
             <svg aria-hidden="true" width="15" height="15">
-              <use href="#reset-icon"></use>
+              <use href="#reset-icon">
             </svg>
           </button>
           <textarea autocorrect="off" autocomplete="off" spellcheck="false" autocapitalize="off" class="prism-live language-css">{data.startingCSS.trim()}</textarea>

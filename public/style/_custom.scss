@@ -319,11 +319,11 @@ section summary {
   gap: 1px;
 }
 
-section.data-gap-reset .output > div {
+section.gap-reset .output > div {
   gap: 1px 0;
 }
 
-section.data-bg-image .output > div {
+section.bg-image .output > div {
   /* background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%23463866" width="1920" height="1080"/><text fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="75" dy="10.5" font-weight="bold" x="50%" y="30%" text-anchor="middle">1920×1080</text></svg>')
     50% / cover; */
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 24" width="32" height="24" fill="%2346386622"><path d="M0,0v24h32V0H0z M4,20l6-14l5,8l3-4l6,10H4z M25,3c2.2,0,4,1.8,4,4s-1.8,4-4,4s-4-1.8-4-4S22.8,3,25,3"/></svg>')
