@@ -1,0 +1,40 @@
+---
+const { data, num } = Astro.props;
+const boxes = [...Array(data.boxes)]
+
+---
+
+<section>
+        <div class="small-label">Øvelse {num}</div>
+
+        <figure>
+          <img src={data.image} alt="" width="884" height="164">
+          <figcaption>
+            <h2>{data.title}</h2>
+            <p>{data.astro.html}</p>
+            <ul class="hints">
+                {data.hints.map(hint=>{
+                    return <li data-type={hint.type}><code>{hint.name}</code> ({hint.type})</li>      
+                })}
+            </ul>
+          </figcaption>
+        </figure>
+
+        
+        <article class="output">
+          <div class="container">
+              {boxes.map((_,index)=><div class={`box box-${index+1}`} contenteditable=""></div>)}
+          </div>
+        </article>
+
+        <div class="editor">
+          <button class="reset">
+            <span class="visually-hidden">Reset</span>
+            <svg aria-hidden="true" width="15" height="15">
+              <use href="#reset-icon"></use>
+            </svg>
+          </button>
+          <textarea autocorrect="off" autocomplete="off" spellcheck="false" autocapitalize="off" class="prism-live language-css">{data.startingCSS.trim()}</textarea>
+          <style class="style"></style>
+        </div>
+      </section>

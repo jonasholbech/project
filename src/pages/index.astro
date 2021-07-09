@@ -1,0 +1,32 @@
+---
+import Exercise from "../components/Exercise.astro";
+const localData = Astro.fetchContent('../posts/*.md');
+
+// Full Astro Component Syntax:
+// https://github.com/snowpackjs/astro/blob/main/docs/core-concepts/astro-components.md
+---
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercssises</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/style/reset.css" />
+    <link rel="stylesheet" href="/style/prism.css" />
+    <link rel="stylesheet" href="/style/custom.css?v=2.0.1" />
+</head>
+<body>
+    <main>
+
+        {localData.map((ex, i) => <Exercise data={ex} num={i+1}/>)}
+
+    </main>
+
+    <script src="script/bliss.js"></script>
+    <script src="script/prism.js"></script>
+    <script src="script/prism-live.js"></script>
+    <script src="script/prism-live-markup.js"></script>
+    <script src="script/prism-live-css.js"></script>
+    <script src="script/custom.js"></script>
+</body>
+</html>
