@@ -1,22 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap");
-
 @font-face {
   font-family: "Wotfard";
-  src: url("./../fonts/wotfard-semibold.woff2") format("woff2");
+  src: url("../assets/fonts/wotfard-semibold.woff2") format("woff2");
   font-style: normal;
   font-weight: 500;
   text-rendering: optimizeLegibility;
 }
 @font-face {
   font-family: "Wotfard";
-  src: url("./../fonts/wotfard-medium.woff2") format("woff2");
+  src: url("../assets/fonts/wotfard-medium.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   text-rendering: optimizeLegibility;
 }
 @font-face {
   font-family: "Wotfard";
-  src: url("./../fonts/wotfard-regular.woff2") format("woff2");
+  src: url("../assets/fonts/wotfard-regular.woff2") format("woff2");
   font-style: normal;
   font-weight: 300;
   text-rendering: optimizeLegibility;
@@ -50,11 +48,11 @@ body {
     50% / cover no-repeat fixed;
 }
 
-.place-items {
+/* .place-items {
   place-items: center;
-}
+} */
 
-h2 {
+h3 {
   font-family: "Wotfard";
   font-weight: 500;
   --min-font: 22;
@@ -98,6 +96,7 @@ footer {
 
 .main-header {
   z-index: 100;
+  pointer-events: none;
 }
 
 .main-header.is-pinned {
@@ -117,6 +116,7 @@ footer {
   border-radius: 8px;
   transform-origin: 0 0;
   transition: 0.1s cubic-bezier(0.5, 0, 0.5, 1);
+  pointer-events: auto;
 }
 
 .main-header h1 {
@@ -169,7 +169,7 @@ main {
   display: grid;
   grid: auto / minmax(1rem, 1fr) minmax(auto, 1200px) minmax(1rem, 1fr);
   gap: 3rem 0;
-  counter-reset: task;
+  /* counter-reset: task; */
 }
 
 section {
@@ -186,7 +186,7 @@ section {
 
 /* section header, */
 section .small-label,
-section figure,
+section .exercise-details,
 section .controls {
   grid-column: 1 / -1;
 }
@@ -200,7 +200,16 @@ section .controls {
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  counter-increment: task;
+  box-shadow: 0 5px 2.5px hsl(200deg 95% 3% / 4%),
+    0 12px 6.5px hsl(200deg 95% 3% / 5%), 0 22.5px 13px hsl(200deg 95% 3% / 7%),
+    0 40.2px 24px hsl(200deg 95% 3% / 8%), 0 75.2px 44px hsl(200deg 95% 3% / 9%),
+    0 180px 80px hsl(200deg 95% 3% / 13%);
+  width: max-content;
+  padding-inline: 1rem;
+  margin-block: -2rem 0;
+  background: #fff;
+  border-radius: 6px;
+  isolation: isolate;
 }
 
 .small-label::before {
@@ -211,27 +220,27 @@ section .controls {
   background: currentColor;
 }
 
-.small-label::after {
+/* .small-label::after {
   content: counter(task);
-}
+} */
 
-section figure {
+section .exercise-details {
   display: inherit;
   /* grid-template-columns: inherit; */
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
   gap: inherit;
 }
 
-section figure img {
+section .exercise-details img {
   /* align-self: end; */
 }
 
-figcaption > p + * {
+.exercise-content > p + * {
   margin-block-start: 1rem;
 }
 
 section .hints {
-  padding: 0.25rem 0.75rem;
+  padding: 0.45rem 0.75rem 0.25rem;
   border-radius: 6px;
   border: 2px solid hsl(153 30% 80%);
   padding-inline-start: 1.25rem;
@@ -240,17 +249,23 @@ section .hints {
   font-weight: 300;
 }
 
-section .hints::before {
-  content: "Hints";
-  margin-block: -0.7rem 0;
+section details {
+  position: relative;
+}
+
+section summary {
+  position: absolute;
+  inset-block-start: -0.35rem;
   background: #efebf9;
   padding-inline: 0.25rem;
-  margin-inline-start: -0.25rem;
+  margin-inline-start: 0.4rem;
   justify-self: start;
   text-transform: uppercase;
+  font-family: "Wotfard";
   font-size: 0.7em;
   font-weight: 600;
   color: hsl(153 20% 40%);
+  cursor: pointer;
 }
 
 .hints li::marker {
@@ -258,12 +273,10 @@ section .hints::before {
   color: var(--m, currentColor);
 }
 
-[data-prop],
 [data-type="property"] {
   --m: hsl(153 70% 50%);
 }
 
-[data-unit],
 [data-type="value"] {
   /* --m: rgb(249, 42, 173); */
   --m: rgb(255 47 179);
@@ -306,11 +319,11 @@ section .hints::before {
   gap: 1px;
 }
 
-[data-gap-reset] .output > div {
+section.data-gap-reset .output > div {
   gap: 1px 0;
 }
 
-[data-bg-image] .output > div {
+section.data-bg-image .output > div {
   /* background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%23463866" width="1920" height="1080"/><text fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="75" dy="10.5" font-weight="bold" x="50%" y="30%" text-anchor="middle">1920×1080</text></svg>')
     50% / cover; */
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 24" width="32" height="24" fill="%2346386622"><path d="M0,0v24h32V0H0z M4,20l6-14l5,8l3-4l6,10H4z M25,3c2.2,0,4,1.8,4,4s-1.8,4-4,4s-4-1.8-4-4S22.8,3,25,3"/></svg>')
@@ -415,6 +428,11 @@ section .hints::before {
   content: "";
 }
 
+.controls > div {
+  display: flex;
+  gap: 6px;
+}
+
 button {
   border-radius: 6px;
   border: 0;
@@ -506,7 +524,7 @@ button.minus::before {
   content: "-";
 }
 
-figcaption p > code {
+.exercise-details p > code {
   display: inline-block;
   padding-inline: 0.3rem;
   font-size: 0.9em;
@@ -542,7 +560,7 @@ code {
   font-weight: 500;
 }
 
-.message {
+/* .message {
   background: #f97e72;
   color: #2a2139;
   padding: 1rem;
@@ -553,7 +571,7 @@ code {
   .message {
     display: none;
   }
-}
+} */
 
 html:not([data-extra="true"])
   :is([data-exercise-key="7"], [data-exercise-key="8"], [data-exercise-key="9"]) {

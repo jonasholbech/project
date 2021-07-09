@@ -1,15 +1,18 @@
 ---
-title: Simpelt Grid
-image: https://d33wubrfki0l68.cloudfront.net/f9f5cae635cc091fda24d36ebcb3a2df2a845862/8fab5/img/grid-exercise-1.webp
+title: Simpelt grid
+image: /assets/img/grid-exercise-1.webp
 boxes: 9
+canAddBoxes: false
+customClass: ""
 startingCSS: |
   .container {
-    display: grid;
+    display: block;
   }
 hints:
   - { type: property, name: display }
   - { type: property, name: grid-template-columns }
-  - { type: value, name: 1fr }
+  - { type: value, name: grid }
+  - { type: value, name: "[n]fr" }
 ---
 
 Lav tre kolonner, som er lige brede.

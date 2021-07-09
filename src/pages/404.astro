@@ -1,11 +1,6 @@
 ---
 import Header from "../components/Header.astro";
-import Exercise from "../components/Exercise.astro";
 import Footer from "../components/Footer.astro";
-const localData = Astro.fetchContent('../posts/*.md');
-
-// Full Astro Component Syntax:
-// https://github.com/snowpackjs/astro/blob/main/docs/core-concepts/astro-components.md
 ---
 <html lang="da">
 <head>
@@ -19,15 +14,26 @@ const localData = Astro.fetchContent('../posts/*.md');
     <link rel="stylesheet" href="/style/reset.css" />
     <link rel="stylesheet" href="/style/prism.css" />
     <link rel="stylesheet" href="/style/custom.css" />
+    <style>
+        main {
+            place-items: center;
+        }
+    </style>
 </head>
 <body>
 
-    <Header />
-
-    <main>
-
-        {localData.map((ex, i) => <Exercise data={ex} num={i+1}/>)}
-
+    <header class="main-header">
+      <h1 aria-label="404 Page not found!">
+        4<span class="stroke-text">0</span>4
+      </h1>
+    </header>
+    <main class="place-items">
+      <section>
+        <article>
+          <h2>Page was not found</h2>
+          <p>Try again, or go <a href="./">back to the exercises</a>.</p>
+        </article>
+      </section>
     </main>
 
     <Footer />

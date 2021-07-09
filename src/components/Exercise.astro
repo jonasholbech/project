@@ -1,29 +1,43 @@
 ---
 const { data, num } = Astro.props;
 const boxes = [...Array(data.boxes)]
-
+const { customClass } = data
 ---
 
-<section>
-        <div class="small-label">Øvelse {num}</div>
+<section class={customClass || null}>
+        <h2 class="small-label">Øvelse {num}</h2>
 
-        <figure>
-          <img src={data.image} alt="" width="884" height="164">
-          <figcaption>
-            <h2>{data.title}</h2>
-            <p>{data.astro.html}</p>
-            <ul class="hints">
-                {data.hints.map(hint=>{
-                    return <li data-type={hint.type}><code>{hint.name}</code> ({hint.type})</li>      
-                })}
-            </ul>
-          </figcaption>
-        </figure>
+        <article class="exercise-details">
+          <img loading="lazy" src={data.image} alt={data.title}>
+          <div class="exercise-content">
+            <h3>{data.title}</h3>
+
+            {data.astro.html}
+
+            <details>
+                <summary>Hints</summary>
+                <ul class="hints">
+                    {data.hints.map(hint=>{
+                        return <li data-type={hint.type}><code>{hint.name}</code> ({hint.type})</li>      
+                    })}
+                </ul>
+            </details>
+          </div>
+        </article>
 
         
+        {data.canAddBoxes && (
+            <div class="controls">
+                <div>
+                <button type="button" class="plus">Add box</button>
+                <button type="button" class="minus">Remove box</button>
+                </div>
+            </div>
+        )}
+
         <article class="output">
           <div class="container">
-              {boxes.map((_,index)=><div class={`box box-${index+1}`} contenteditable=""></div>)}
+              {boxes.map((_,index)=><div class={`box box-${index+1}`} contenteditable></div>)}
           </div>
         </article>
 
