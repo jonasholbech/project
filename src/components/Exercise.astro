@@ -4,8 +4,12 @@ const boxes = [...Array(data.boxes)]
 const { customClass } = data
 ---
 
-<section class={customClass || null}>
+<section data-extra={data.isExtra && "true"} data-exercise-key={num} class={customClass || null}>
         <h2 class="small-label">Øvelse {num} af {all}</h2>
+
+        {data.isExtra && (
+            <div class="banner" data-banner-title="Ekstra"></div>
+        )}
 
         <article class="exercise-details">
           {data.isVideoThumb ? (
@@ -21,14 +25,18 @@ const { customClass } = data
 
             {data.astro.html}
 
-            <details>
-                <summary>Hints</summary>
-                <ul class="hints">
-                    {data.hints.map(hint=>{
-                        return <li data-type={hint.type}><code>{hint.name}</code> ({hint.type})</li>      
-                    })}
-                </ul>
-            </details>
+            {data.hints ? (
+                <details>
+                    <summary>Hints</summary>
+                    <ul class="hints">
+                        {data.hints.map(hint=>{
+                            return <li data-type={hint?.type}><code>{hint?.name}</code> ({hint?.type})</li>      
+                        })}
+                    </ul>
+                </details>
+            ) : (
+                <div data-no-hints>Ingen hints</div>
+            )}
           </div>
         </article>
 
@@ -36,8 +44,8 @@ const { customClass } = data
         {data.canAddBoxes && (
             <div class="controls">
                 <div>
-                <button type="button" class="plus">Add box</button>
-                <button type="button" class="minus">Remove box</button>
+                    <button type="button" class="plus">Tilføj boks</button>
+                    <button type="button" class="minus">Fjern boks</button>
                 </div>
             </div>
         )}

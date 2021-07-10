@@ -22,8 +22,9 @@
   sections.forEach((section, i) => {
     const styleTag = section.querySelector(".editor > style");
     const _tA = section.querySelector(".editor > textarea");
-    const exerciseKey = `${i + 1}`;
-    const boxKey = `box-${i + 1}`;
+    const exerciseKey = section.dataset.exerciseKey;
+    const boxKey = `box-${section.dataset.exerciseKey}`;
+    let isExtra = section.dataset.extra;
     let boxes = 0;
     let startingCSS = _tA.innerHTML;
 
@@ -50,6 +51,9 @@
     function resetUI() {
       if (localStorage.getItem(exerciseKey) || _tA.value === "") {
         localStorage.removeItem(exerciseKey);
+        if (localStorage.getItem(`extra-${exerciseKey}`)) {
+          localStorage.removeItem(`extra-${exerciseKey}`);
+        }
         styleTag.innerHTML = null;
         _tA.value = startingCSS;
         _tA.focus(); /* ensure that the UI updates */
@@ -133,7 +137,8 @@
       // const parentClass =
       //   "exercise-" + section.querySelector("article>div").className;
       // const parentDataset = `${i + 1}`;
-      section.dataset.exerciseKey = `${i + 1}`;
+
+      // section.dataset.exerciseKey = `${i + 1}`;
 
       styleTag.innerHTML = prefix(_tA.value);
 
@@ -142,11 +147,14 @@
         styleTag.innerHTML = prefix(_tA.value);
       }
 
-      if (
-        localStorage.getItem("7") ||
-        localStorage.getItem("8") ||
-        localStorage.getItem("9")
-      ) {
+      // if (
+      //   localStorage.getItem("7") ||
+      //   localStorage.getItem("8") ||
+      //   localStorage.getItem("9")
+      // ) {
+      //   document.documentElement.dataset.extra = "true";
+      // }
+      if (localStorage.getItem(`extra-${exerciseKey}`)) {
         document.documentElement.dataset.extra = "true";
       }
 
@@ -167,8 +175,13 @@
         styleTag.innerHTML = prefix(e.target.value);
         localStorage.setItem(exerciseKey, _tA.value);
 
+        if (isExtra) {
+          localStorage.setItem(`extra-${exerciseKey}`, true);
+        }
+
         if (_tA.value === "") {
           localStorage.removeItem(exerciseKey);
+          localStorage.removeItem(`extra-${exerciseKey}`);
         }
 
         if (_tA.value !== startingCSS) {
@@ -241,7 +254,7 @@
       document.documentElement.dataset.extra = "true";
 
       document
-        .querySelector("section[data-exercise-key='7']")
+        .querySelectorAll("section[data-extra='true']")[0]
         .scrollIntoView({ behavior: "smooth" });
     }
   });
