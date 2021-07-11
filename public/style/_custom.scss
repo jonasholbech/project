@@ -258,11 +258,12 @@ section details {
 
 section details[open] summary {
   width: auto;
+  border-radius: 4px 4px 0 0;
   // border-block-end: 2px solid hsl(154 29% 90%);
 }
 
 section summary {
-  border-radius: 4px 4px 0 0;
+  border-radius: 4px;
   color: #5000ca;
   // background: hsl(264deg 35% 90%);
   background: linear-gradient(to bottom right, #e4ddee, 60%, #e4ddee00 90%)
