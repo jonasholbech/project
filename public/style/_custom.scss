@@ -663,3 +663,7 @@ section .banner::before {
 [data-konami="true"] section .editor {
   border: 2px solid #fb28a8;
 } */
+
+footer {
+  user-select: none;
+}

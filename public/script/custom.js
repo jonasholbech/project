@@ -224,6 +224,12 @@
   //   document.body.removeChild(element);
   // }
 
+  const footerBtn = document.querySelector(".dbclick");
+
+  footerBtn.addEventListener("dblclick", function (e) {
+    document.documentElement.dataset.extra = "true";
+  });
+
   const keySequence = [];
   let konamiString = "";
   const konamiCode = [
