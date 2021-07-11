@@ -20,7 +20,8 @@
   // const classReg = /(\.|#|\[[a-z]|section|div|span)/gi;
   // const classReg = /.+(?=\{)|.+(\n)(?=\{)/gm;
   // const classReg = /(?!\}).(.+(?=\{))|(.+(\n))(?=\{)/gm;
-  const classReg = /[^\}\n]+(?=\{)/g;
+  // const classReg = /[^\}\n]+(?=\{)/g;
+  const classReg = /(?=.)[^\}]+(?=\{)/g;
 
   sections.forEach((section, i) => {
     const styleTag = section.querySelector(".editor > style");
