@@ -17,7 +17,10 @@
   });
 
   const sections = document.querySelectorAll("section");
-  const classReg = /(\.[a-z])/gi;
+  // const classReg = /(\.|#|\[[a-z]|section|div|span)/gi;
+  // const classReg = /.+(?=\{)|.+(\n)(?=\{)/gm;
+  // const classReg = /(?!\}).(.+(?=\{))|(.+(\n))(?=\{)/gm;
+  const classReg = /[^\}\n]+(?=\{)/g;
 
   sections.forEach((section, i) => {
     const styleTag = section.querySelector(".editor > style");
