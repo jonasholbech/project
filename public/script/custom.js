@@ -17,11 +17,26 @@
   });
 
   const sections = document.querySelectorAll("section");
+  const outputs = document.querySelectorAll(".output");
   // const classReg = /(\.|#|\[[a-z]|section|div|span)/gi;
   // const classReg = /.+(?=\{)|.+(\n)(?=\{)/gm;
   // const classReg = /(?!\}).(.+(?=\{))|(.+(\n))(?=\{)/gm;
   // const classReg = /[^\}\n]+(?=\{)/g;
   const classReg = /(?=.)[^\}]+(?=\{)/g;
+
+  outputs.forEach((output) => {
+    output.addEventListener("click", ({ target }) => {
+      target.contentEditable = true;
+      target.focus();
+      target.addEventListener(
+        "mouseout",
+        ({ target }) => {
+          target.contentEditable = false;
+        },
+        { once: true }
+      );
+    });
+  });
 
   sections.forEach((section, i) => {
     const styleTag = section.querySelector(".editor > style");

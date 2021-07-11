@@ -382,7 +382,7 @@ section.bg-image .output > div {
   font-weight: 500;
 }
 
-.box:hover {
+.box[contenteditable="true"]:hover {
   background: linear-gradient(#287ba8, #287ba8) content-box,
     linear-gradient(#6a54ab, #6a54ab) padding-box;
   background: linear-gradient(#89b2be, #89b2be) content-box,
