@@ -1,0 +1,110 @@
+---
+const { icon, label } = Astro.props;
+---
+
+<button type="button" class={icon}>
+    <svg aria-hidden="true" width="18" height="18" fill="none" stroke="var(--btn-icon, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <use href={`#${icon}`}></use>
+    </svg>
+    <span>{label}</span>
+</button>
+
+<style lang="scss">
+    button {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        border-radius: 6px;
+        border: 0;
+        // background: hsl(324deg 50% 80%);
+        background: var(--btn-bg, hsl(264 50% 88%));
+        color: #2a2139;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 0.25rem 0.5rem;
+        cursor: pointer;
+        box-shadow: inset 0 0 0 var(--btn-stroke, 1px) var(--btn-theme, #5000ca);
+        transition: 0.2s box-shadow;
+        will-change: box-shadow;
+        }
+
+        button.plus {
+        --btn-icon: #5000ca;
+        }
+        button.minus {
+        --btn-icon: hsl(324 66% 37%);
+        --btn-theme: hsl(324 66% 37%);
+        --btn-bg: hsl(324 60% 85%);
+        }
+
+        button:focus {
+        // box-shadow: inset 0 0 0 2px #5000ca;
+        // --btn-stroke: 2px;
+        }
+        button.reset:focus::before {
+        opacity: 1;
+        }
+
+        button:active {
+        // box-shadow: inset 0 0 0 2px #5000ca;
+        --btn-stroke: 2px;
+        background: hsl(264 50% 80%);
+        }
+
+        button[disabled] {
+        filter: grayscale(1);
+        opacity: var(--opacity, 0.7);
+        cursor: default;
+        cursor: not-allowed;
+        }
+
+        button.reset {
+        --opacity: 0;
+        --btn-stroke: 0;
+        --btn-theme: #fb28a8;
+        position: absolute;
+        inset-inline-end: 0;
+        inset-block-start: 0.25em;
+        z-index: 1;
+        margin-inline-end: 0.25em;
+        /* padding-block: 0.1em; */
+        color: #fff;
+        padding: 0;
+        inline-size: 25px;
+        block-size: 25px;
+        background: transparent;
+        display: grid;
+        place-content: center;
+        }
+
+        button.reset::before {
+        content: "Reset";
+        text-transform: uppercase;
+        position: absolute;
+        inset-inline-end: 30px;
+        inset-block-start: 0;
+        font-size: 0.65em;
+        font-family: "Wotfard";
+        font-weight: 500;
+        block-size: 25px;
+        margin-block-start: 0.125em;
+        display: grid;
+        place-content: center;
+        letter-spacing: 0.1em;
+        pointer-events: none;
+        transition: 0.3s;
+        opacity: 0;
+        }
+
+        @media (hover: hover) {
+        button:hover {
+            --btn-stroke: 2px;
+        }
+        button.reset:hover::before {
+            opacity: 1;
+        }
+        button[disabled] {
+            box-shadow: inset 0 0 0 0 #5000ca;
+        }
+        }
+</style>
