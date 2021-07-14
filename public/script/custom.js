@@ -69,7 +69,7 @@
       let option = target.dataset.accept;
       if (option === "true") {
         resetBtns.classList.remove("active");
-        promptUI();
+        resetUI();
       } else {
         resetBtns.classList.remove("active");
       }
@@ -86,13 +86,13 @@
     //     resetUI();
     //   }
     // }
-    function promptUI() {
-      if (_tA.value === "") {
-        resetUI();
-      } else {
-        resetUI();
-      }
-    }
+    // function promptUI() {
+    //   if (_tA.value === "") {
+    //     resetUI();
+    //   } else {
+    //     resetUI();
+    //   }
+    // }
 
     function resetUI() {
       if (localStorage.getItem(exerciseKey) || _tA.value === "") {
