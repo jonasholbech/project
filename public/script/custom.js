@@ -50,19 +50,46 @@
     const parent = section.querySelector(".container");
     // const resetBtns = section.querySelectorAll(".reset");
     const reset = section.querySelector(".reset");
+    const confirming = section.querySelector(".button-group-confirm");
+    const resetBtns = section.querySelector(".reset-buttons");
     const plus = section.querySelector(".plus");
     const minus = section.querySelector(".minus");
 
     // resetBtns.forEach((reset) => {
-    reset.addEventListener("click", promptUI);
+    // reset.addEventListener("click", promptUI);
+    reset.addEventListener("click", (e) => {
+      if (_tA.value === "") {
+        resetUI();
+      } else {
+        resetBtns.classList.add("active");
+      }
+    });
+
+    confirming.addEventListener("click", ({ target }) => {
+      let option = target.dataset.accept;
+      if (option === "true") {
+        resetBtns.classList.remove("active");
+        promptUI();
+      } else {
+        resetBtns.classList.remove("active");
+      }
+    });
+
     // });
 
+    // function promptUI() {
+    //   if (_tA.value === "") {
+    //     resetUI();
+    //   } else if (
+    //     window.confirm(`Do you really want to reset exercise ${exerciseKey}?`)
+    //   ) {
+    //     resetUI();
+    //   }
+    // }
     function promptUI() {
       if (_tA.value === "") {
         resetUI();
-      } else if (
-        window.confirm(`Do you really want to reset exercise ${exerciseKey}?`)
-      ) {
+      } else {
         resetUI();
       }
     }
