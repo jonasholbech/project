@@ -14,7 +14,7 @@ const { customClass } = data
 
         <article class="exercise-details">
           {data.isVideoThumb ? (
-                <video muted loop autoplay playsinline preload="metadata">
+                <video muted loop autoplay playsinline>
                     <source src={data.image.path} type="video/mp4" />
                 </video>
             ) : (
