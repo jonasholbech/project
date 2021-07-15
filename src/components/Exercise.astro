@@ -15,10 +15,10 @@ const { customClass } = data
         <article class="exercise-details">
           {data.isVideoThumb ? (
                 <video muted loop autoplay playsinline preload="metadata">
-                    <source src={data.image} type="video/mp4" />
+                    <source src={data.image.path} type="video/mp4" />
                 </video>
             ) : (
-                <img loading="lazy" src={data.image} alt={data.title}>
+                <img loading="lazy" src={data.image.path} alt={data.title} width="{data.image.width}" height="{data.image.height}">
             )
           }
           <div class="exercise-content">
