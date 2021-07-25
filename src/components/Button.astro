@@ -1,12 +1,12 @@
 ---
-const { icon, label } = Astro.props;
+const { icon } = Astro.props;
 ---
 
 <button type="button" class={icon}>
     <svg aria-hidden="true" width="18" height="18" fill="none" stroke="var(--btn-icon, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <use href={`#${icon}`}></use>
     </svg>
-    <span>{label}</span>
+    <span> <slot /> </span>
 </button>
 
 <style lang="scss">
