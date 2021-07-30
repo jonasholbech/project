@@ -27,6 +27,14 @@
   text-rendering: optimizeLegibility;
 }
 
+@font-face {
+  font-family: "OpMn";
+  src: url("../assets/fonts/OperatorMono-Medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  text-rendering: optimizeLegibility;
+}
+
 * {
   --max-screen-size: var(--screen-max, 1200);
   --min-screen-size: var(--screen-min, 375);
@@ -250,6 +258,12 @@ section .exercise-details img {
   /* align-self: end; */
 }
 
+.exercise-content {
+  @media (max-width: 895px) {
+    order: -1;
+  }
+}
+
 .exercise-content > p + * {
   margin-block-start: 1rem;
 }
@@ -345,6 +359,11 @@ section [data-no-hints] {
   resize: both;
   overflow: hidden;
   border-radius: 8px;
+
+  @media (max-width: 895px) {
+    resize: revert;
+    overflow: revert;
+  }
 }
 
 .output::after {
@@ -359,6 +378,10 @@ section [data-no-hints] {
   block-size: 2rem;
   border-radius: 50%;
   background: #fb28a8;
+
+  @media (max-width: 895px) {
+    display: none;
+  }
 }
 
 .output > div {
@@ -614,8 +637,9 @@ div.prism-live {
 textarea.prism-live,
 pre.prism-live,
 code {
-  font-family: "Roboto Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace !important;
+  // font-family: "Roboto Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+  //   monospace !important;
+  font-family: "OpMn", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace !important;
   font-weight: 500;
 }
 
