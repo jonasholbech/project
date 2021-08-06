@@ -1,36 +1,11 @@
 ---
-import Head from "../components/Head.astro";
-import Header from "../components/Header.astro";
+import BaseLayout from '../layouts/Base.astro'
 import Exercise from "../components/Exercise.astro";
-import Footer from "../components/Footer.astro";
 const localData = Astro.fetchContent('../exercises/flex/*.md');
-
-// Full Astro Component Syntax:
-// https://github.com/snowpackjs/astro/blob/main/docs/core-concepts/astro-components.md
 ---
-<html lang="da">
-<head>
-    <Head />
-</head>
-<body>
 
-    <Header />
-
-    <main>
-
-        {localData.map((ex, i, all) => (
-            <Exercise data={ex} num={i+1} all={all.length} />
-        ))}
-
-    </main>
-
-    <Footer />
-
-    <script src="/script/bliss.js"></script>
-    <script src="/script/prism.js"></script>
-    <script src="/script/prism-live.js"></script>
-    <script src="/script/prism-live-markup.js"></script>
-    <script src="/script/prism-live-css.js"></script>
-    <script type="module" src="/script/custom.js"></script>
-</body>
-</html>
+<BaseLayout title="- Flex">
+    {localData.map((ex, i, all) => (
+        <Exercise data={ex} num={i+1} all={all.length} />
+    ))}
+</BaseLayout>
