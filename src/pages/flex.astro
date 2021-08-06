@@ -6,6 +6,6 @@ const localData = Astro.fetchContent('../exercises/flex/*.md');
 
 <BaseLayout title="- Flex">
     {localData.map((ex, i, all) => (
-        <Exercise data={ex} num={i+1} all={all.length} />
+        <Exercise dataSuffix="flex" data={ex} num={i+1} all={all.length} />
     ))}
 </BaseLayout>

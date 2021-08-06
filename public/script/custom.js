@@ -42,7 +42,7 @@
     const styleTag = section.querySelector(".editor > style");
     const _tA = section.querySelector(".editor > textarea");
     const exerciseKey = section.dataset.exerciseKey;
-    const boxKey = `box-${section.dataset.exerciseKey}`;
+    const boxKey = `box-${exerciseKey}`;
     let isExtra = section.dataset.extra;
     let boxes = 0;
     let startingCSS = _tA.innerHTML;

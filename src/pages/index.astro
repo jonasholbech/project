@@ -6,6 +6,6 @@ const localData = Astro.fetchContent('../exercises/grid/*.md');
 
 <BaseLayout title="- Grid">
     {localData.map((ex, i, all) => (
-        <Exercise data={ex} num={i+1} all={all.length} />
+        <Exercise dataSuffix="grid" data={ex} num={i+1} all={all.length} />
     ))}
 </BaseLayout>
