@@ -1,3 +1,4 @@
+import solutionChecker from "./solutionChecker.js";
 {
   function observeHeader() {
     const el = document.querySelector(".main-header");
@@ -239,6 +240,7 @@
     };
 
     init();
+    solutionChecker();
   });
 
   // const downloadBtn = document.querySelector("#download");

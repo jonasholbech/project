@@ -5,7 +5,7 @@ const boxes = [...Array(data.boxes)]
 const { customClass } = data
 ---
 
-<section data-extra={data.isExtra && "true"} data-exercise-key={num+dataSuffix} class={customClass || null}>
+<section data-extra={data.isExtra && "true"} data-requirements={data.requirements} data-suggested-solution={data.suggestedSolution} data-exercise-key={num+dataSuffix} class={customClass || null}>
         <h2 class="small-label">Øvelse {num} af {all}</h2>
 
         {data.isExtra && (
@@ -82,11 +82,18 @@ const { customClass } = data
           </div>
           <textarea aria-label="Write here" autocorrect="off" autocomplete="off" spellcheck="false" autocapitalize="off" class="prism-live language-css">{data.startingCSS.trim()}</textarea>
           <style class="style"></style>
+          <div class="valid hidden">Huzzah!!!</div>
         </div>
       </section>
 
 
       <style>
+      .valid {
+        color:green;
+      }
+      .hidden {
+        display:none;
+      }
         .reset-buttons {
           position: absolute;
           inset-inline-end: 0;
